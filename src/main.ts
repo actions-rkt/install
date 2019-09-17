@@ -35,7 +35,7 @@ async function installRacket(dst: string) {
 
     const proc = spawnSync(installer, [], { input: `no\n${dst}\n\n` });
     if (proc.error) throw proc.error;
-    core.info(`Racket installed to ${dst}`);
+    core.debug(`Racket installed to ${dst}`);
 
     const binDir = path.join(dst, 'bin');
     core.addPath(binDir);
