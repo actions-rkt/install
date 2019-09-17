@@ -34,7 +34,7 @@ async function installRacket(dst: string) {
     core.debug(`Installer downloaded to ${installer}`);
     const proc = spawnSync(installer, [], { input: `no\n${dst}\n\n` });
     if (proc.error) throw proc.error;
-    core.debug(`Racket installed to ${dst}`
+    core.debug(`Racket installed to ${dst}`);
 }
 
 async function main() {
