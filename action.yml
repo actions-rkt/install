@@ -9,6 +9,13 @@ inputs:
     description: Installation directory
     required: true
     default: /opt/racket
+output:
+  bin:
+    description: binary directory
+  raco:
+    description: raco binary
+  racket:
+    description: racket binary
 runs:
   using: node12
   main: lib/main.js

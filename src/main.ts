@@ -31,10 +31,18 @@ function downloadFile(url: string, name: string): Promise<string> {
 
 async function installRacket(dst: string) {
     const installer = await downloadFile(installerUrl, 'racket-installer.sh');
-    core.debug(`Installer downloaded to ${installer}`);
+    core.debug(`Racket installer downloaded to ${installer}`);
+
     const proc = spawnSync(installer, [], { input: `no\n${dst}\n\n` });
     if (proc.error) throw proc.error;
-    core.debug(`Racket installed to ${dst}`);
+    core.info(`Racket installed to ${dst}`);
+
+    const binDir = path.join(dst, 'bin');
+    core.addPath(binDir);
+
+    core.setOutput('bin', binDir);
+    core.setOutput('raco', path.join(binDir, 'raco'));
+    core.setOutput('racket', path.join(binDir, 'racket'));
 }
 
 async function main() {
