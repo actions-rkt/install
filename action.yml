@@ -1,6 +1,6 @@
 name: racket-install
 description: Install Racket
-author: @tov
+author: '@tov'
 branding:
   icon: download
   color: red
