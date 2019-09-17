@@ -1,8 +1,8 @@
 {
-  "name": "javascript-template-action",
-  "version": "0.0.0",
-  "private": true,
-  "description": "JavaScript template action",
+  "name": "racket-install",
+  "version": "1.0.0",
+  "private": false,
+  "description": "JavaScript action to install Racket",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -14,13 +14,14 @@
   },
   "keywords": [
     "actions",
-    "node",
-    "setup"
+    "racket"
   ],
-  "author": "YourNameOrOrganization",
+  "author": "@tov",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.0.0"
+    "@actions/core": "^1.1.0",
+    "@actions/exec": "^1.0.1",
+    "download": "^7.1.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.13",

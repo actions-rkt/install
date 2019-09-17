@@ -3,6 +3,8 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
+const { spawnSync } = require('child_process');
+
 const core = require('@actions/core');
 const exec = require('@actions/exec');
 
@@ -27,9 +29,12 @@ function downloadFile(url: string, name: string): Promise<string> {
     });
 }
 
-async function installRacket(dst: string)  {
+async function installRacket(dst: string) {
     const installer = await downloadFile(installerUrl, 'racket-installer.sh');
-    core.log(`Installer downloaded to ${installer}`);
+    core.debug(`Installer downloaded to ${installer}`);
+    const proc = spawnSync(installer, [], { input: `no\n${dst}\n\n` });
+    if (proc.error) throw proc.error;
+    core.debug(`Racket installed to ${dst}`
 }
 
 async function main() {
