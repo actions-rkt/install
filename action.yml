@@ -1,10 +1,14 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: racket-install
+description: Install Racket
+author: @tov
+branding:
+  icon: download
+  color: red
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  destination:
+    description: Installation directory
+    required: true
+    default: /opt/racket
 runs:
-  using: 'node12'
-  main: 'lib/main.js'
+  using: node12
+  main: lib/main.js
