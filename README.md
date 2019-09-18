@@ -1,9 +1,23 @@
-# Create a JavaScript Action using TypeScript
+# JavaScript Action to Install Racket 
 
-This template offers an easy way to get started writing a JavaScript action with TypeScript compile time support, unit testing with Jest and using the GitHub Actions Toolkit.
+This action installs the current version of Racket.
 
-## Getting Started
+It currently works only on Linux.
 
-See the walkthrough located [here](https://github.com/actions/toolkit/blob/master/docs/typescript-action.md).
+## Inputs
 
-In addition to walking your through how to create an action, it also provides strategies for versioning, releasing and referencing your actions.
+### `destination`
+
+**Required** The installation directory for Racket. Default `'/opt/racket'`.
+
+## Example usage
+
+```yaml
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions-rkt/install@releases/v1
+    - run: raco test .
+```
