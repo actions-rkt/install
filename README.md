@@ -18,6 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: actions-rkt/install@releases/v1
+    - uses: actions-rkt/install@v1
     - run: raco test .
 ```
