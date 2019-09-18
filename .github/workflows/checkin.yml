@@ -7,14 +7,16 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: "npm ci"
-      run: npm ci
+    # `npm i` doesn't work for the last step right now
+    - name: "npm install"
+      run: npm install
 
     - name: "npm run build"
       run: npm run build
 
-    - name: "npm run test"
-      run: npm run test
+    # Doesn't do anything yet:
+    # - name: "npm run test"
+    #   run: npm run test
 
     - name: "check for uncommitted changes"
       # Ensure no changes, but ignore node_modules dir since dev/fresh ci deps installed.
