@@ -6,7 +6,6 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 
 const core = require('@actions/core');
-const exec = require('@actions/exec');
 
 const baseUrl = 'https://plt.eecs.northwestern.edu/snapshots/current/installers';
 const linuxInstaller = 'racket-test-current-x86_64-linux-precise.sh';
@@ -39,10 +38,6 @@ async function installRacket(dst: string) {
 
     const binDir = path.join(dst, 'bin');
     core.addPath(binDir);
-
-    core.setOutput('bin', binDir);
-    core.setOutput('raco', path.join(binDir, 'raco'));
-    core.setOutput('racket', path.join(binDir, 'racket'));
 }
 
 async function main() {
