@@ -1,6 +1,6 @@
 {
   "name": "racket-install",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "JavaScript action to install Racket",
   "main": "dist/index.js",
@@ -23,16 +23,16 @@
     "url": "https://github.com/actions-rkt/install/issues"
   },
   "dependencies": {
-    "@actions/core": "^1.1.0",
-    "download": "^7.1.0"
+    "@actions/core": "^1.2.3",
+    "download": "^8.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.13",
-    "@types/node": "^12.7.5",
-    "@zeit/ncc": "^0.20.5",
-    "jest": "^24.9.0",
-    "jest-circus": "^24.9.0",
-    "ts-jest": "^24.1.0",
-    "typescript": "^3.5.1"
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.11.0",
+    "@zeit/ncc": "^0.22.1",
+    "jest": "^25.2.7",
+    "jest-circus": "^25.2.7",
+    "ts-jest": "^25.3.1",
+    "typescript": "^3.8.3"
   }
 }
