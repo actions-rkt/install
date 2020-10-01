@@ -9,6 +9,10 @@ inputs:
     description: Installation directory
     required: true
     default: /opt/racket
+  version:
+    description: Racket version
+    required: true
+    default: 7.8
 runs:
   using: node12
   main: dist/index.js
