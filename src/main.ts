@@ -7,9 +7,8 @@ const { spawnSync } = require('child_process');
 
 const core = require('@actions/core');
 
-const baseUrl = 'https://plt.eecs.northwestern.edu/snapshots/current/installers';
-const linuxInstaller = 'racket-test-current-x86_64-linux-precise.sh';
-const installerUrl = `${baseUrl}/${linuxInstaller}`;
+const installerUrl = (version: string) =>
+    `https://download.racket-lang.org/releases/${version}/installers/racket-${version}-x86_64-linux.sh`
 
 function downloadFile(url: string, name: string): Promise<string> {
     const absPath = path.join(os.tmpdir(), name);
@@ -28,13 +27,14 @@ function downloadFile(url: string, name: string): Promise<string> {
     });
 }
 
-async function installRacket(dst: string) {
-    const installer = await downloadFile(installerUrl, 'racket-installer.sh');
-    core.debug(`Racket installer downloaded to ${installer}`);
+async function installRacket(dst: string, ver: string) {
+    const installer = await downloadFile(installerUrl(ver),
+                                         'racket-installer.sh');
+    core.debug(`Racket ${ver} installer downloaded to ${installer}`);
 
     const proc = spawnSync(installer, [], { input: `no\n${dst}\n\n` });
     if (proc.error) throw proc.error;
-    core.debug(`Racket installed to ${dst}`);
+    core.debug(`Racket ${ver} installed to ${dst}`);
 
     const binDir = path.join(dst, 'bin');
     core.addPath(binDir);
@@ -43,10 +43,11 @@ async function installRacket(dst: string) {
 async function main() {
     try {
         const destination = core.getInput('destination');
-        await installRacket(destination);
+        const version = core.getInput('version');
+        await installRacket(destination, version);
     } catch (error) {
         core.setFailed(error.message);
     }
 }
 
-main();
+main().then(() => {}, console.error)
