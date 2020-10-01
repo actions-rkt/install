@@ -49,4 +49,4 @@ async function main() {
     }
 }
 
-main();
+main().then(() => {}, console.error)
