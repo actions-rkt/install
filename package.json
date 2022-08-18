@@ -23,7 +23,7 @@
     "url": "https://github.com/actions-rkt/install/issues"
   },
   "dependencies": {
-    "@actions/core": "^1.2.3",
+    "@actions/core": "^1.9.1",
     "download": "^8.0.0"
   },
   "devDependencies": {
